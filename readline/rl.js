@@ -1,4 +1,4 @@
-import readline from "readline"
+const readline =  require("readline")
 const rl = readline.createInterface(process.stdin,process.stdout)
 
-export default rl
+module.exports = rl
