@@ -1,4 +1,5 @@
 const rl = require("./rl")
+const {Connect} = require("../client/create")
 let local = {
     ip:"",
     port:""
@@ -16,6 +17,7 @@ const SynchronizePort = () => {
     rl.question("port: ",(port) => {
         if (port.length == 0 || port == " ") return SynchronizePort()
         local.port = port
+        Connect(local.ip,local.port)
     })
 }
 
