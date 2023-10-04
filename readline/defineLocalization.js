@@ -18,3 +18,5 @@ const definePort = () => {
         local.port = port
     })
 }
+
+module.exports = {defineLocalization}
