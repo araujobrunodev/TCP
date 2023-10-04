@@ -1,4 +1,5 @@
 const rl =  require("./rl")
+const {createServer} = require("../server/create")
 let local = {
     ip:"",
     port:""
@@ -16,6 +17,7 @@ const definePort = () => {
     rl.question("port: ",(port) => {
         if (port.length == 0 || port == " ") return definePort()
         local.port = port
+        createServer(local.ip,local.port)
     })
 }
 
