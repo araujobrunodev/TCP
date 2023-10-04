@@ -4,7 +4,9 @@ const createServer = (ip,port) => {
     net.createServer((socket) => {
         
     }).listen(port,ip, () => {
-        console.log("server was created")
+        console.log("\n========================")
+        console.log("   server was created  ")
+        console.log("========================\n")
     })
 }
 
