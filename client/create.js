@@ -6,7 +6,9 @@ const Connect = (ip,port) => {
     let socket = new net.Socket()
 
     socket.connect(port,ip,() => {
-        console.log("\nwas connected\n")
+        console.log("\n==================")
+        console.log("   is connected   ")
+        console.log("==================\n")
         send(socket)
         receive(socket)
     })
