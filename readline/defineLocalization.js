@@ -1,24 +1,36 @@
-const rl =  require("./rl")
-const {createServer} = require("../server/create")
+const rl = require("./rl")
+const net = require("net")
+const { createServer } = require("../server/create")
 let local = {
-    ip:"",
-    port:""
+    ip: "",
+    port: ""
 }
 
 const defineLocalization = () => {
-    rl.question("localization: ", (localization) => {
-        if (localization.length == 0 || localization == " ") return defineLocalization()
-        local.ip = localization
-        definePort()
+    console.log("=======================================")
+    console.log("insert info below to create a server\n")
+
+    rl.question("IP: ", (localization) => {
+        if (localization == "localhost" || net.isIP(localization) != 0) {
+            local.ip = localization
+            definePort()
+        } else 
+            return defineLocalization()
     })
 }
 
 const definePort = () => {
-    rl.question("port: ",(port) => {
-        if (port.length == 0 || port == " ") return definePort()
-        local.port = port
-        createServer(local.ip,local.port)
+    rl.question("Port: ", (port) => {
+        let portToNumber = parseInt(port)
+
+        if (portToNumber.length == 0 ||
+            portToNumber > 65536 ||
+            typeof portToNumber !== "number" ||
+            isNaN(portToNumber)) return definePort()
+
+        local.port = portToNumber
+        createServer(local.ip, local.port)
     })
 }
 
-module.exports = {defineLocalization}
+module.exports = { defineLocalization }
