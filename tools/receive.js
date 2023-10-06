@@ -5,7 +5,7 @@ const receive = (socket) => {
     socket.on("data",(data) => {
         let line = `received: ${data.toString("utf8")}`
         
-        if (canBreakline()) console.log(`\n${line}}`)
+        if (canBreakline()) console.log(`\n${line}`)
         else console.log(line)
 
         listOfLines.push(false)
