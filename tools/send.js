@@ -1,4 +1,4 @@
-const rl = require("../readline/rl")
+const {rl} = require("../readline/rl")
 const {close} = require("./close")
 let {listOfLines} = require("../lines/list")
 

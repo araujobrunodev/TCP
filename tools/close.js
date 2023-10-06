@@ -1,4 +1,4 @@
-const rl = require("../readline/rl")
+const {rl} = require("../readline/rl")
 
 const close = (socket,msg) => {
     if (msg.match(/CLOSE/ig)) {
