@@ -1,4 +1,4 @@
-const rl = require("./rl")
+const {rl} = require("./rl")
 const net = require("net")
 const {Connect} = require("../client/create")
 let local = {
