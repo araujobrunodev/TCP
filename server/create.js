@@ -11,7 +11,11 @@ const createServer = (ip,port) => {
         leave(socket)
         
     }).listen(port,ip, () => {
-        console.log("\n========================")
+        console.clear()
+        console.log("========================")
+        console.log(`     IP: ${ip}         `)
+        console.log(`      Port: ${port}       `)
+        console.log("========================")
         console.log("   server was created  ")
         console.log("========================\n")
     })
