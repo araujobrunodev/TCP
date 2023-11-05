@@ -1,16 +1,24 @@
 const net = require("net")
-const {send} = require("../tools/send")
-const {receive} = require("../tools/receive")
-const {leave} = require("./clientLeave")
+const { send } = require("../tools/send")
+const { receive } = require("../tools/receive")
+const { leave } = require("./clientLeave")
+let = {clients} = require("./listOfClients")
 
-const createServer = (ip,port) => {
+const createServer = (ip, port) => {
     net.createServer((socket) => {
         console.log("client was connected\n")
-        send(socket)
+        send("mainMessage")
         receive(socket)
         leave(socket)
-        
-    }).listen(port,ip, () => {
+
+        clients.push({
+            IP: ip,
+            Port: port,
+            Socket: socket,
+            send(arg) { this.Socket.write(arg) }
+        })
+
+    }).listen(port, ip, () => {
         console.clear()
         console.log("========================")
         console.log(`     IP: ${ip}         `)
@@ -21,4 +29,4 @@ const createServer = (ip,port) => {
     })
 }
 
-module.exports =  {createServer}
+module.exports = { createServer }
