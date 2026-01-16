@@ -8,7 +8,7 @@ const createServer = (ip, port) => {
     net.createServer((socket) => {
         console.log("client was connected\n")
         send("mainMessage")
-        receive(socket)
+        receive(socket, "server")
         leave(socket)
 
         clients.push({

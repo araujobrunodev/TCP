@@ -1,5 +1,6 @@
 const { rl } = require("../readline/rl")
 const { close } = require("./close")
+const broadcast = require("../tools/broadcast")
 let { clients } = require("../server/listOfClients")
 let { listOfLines } = require("../lines/list")
 
@@ -20,10 +21,7 @@ const send = (something) => {
 					socket.write(msg)
 					close(socket, msg)
 				} else {
-					if (typeof clients == "undefined" | clients.length === 0) return;
-					clients.forEach(client => {
-						client.send(msg)
-					})
+					broadcast(msg)
 				}
 				break;
 		}
