@@ -1,9 +1,12 @@
 const { clients } = require("../server/listOfClients")
 
-function  broadcast (msg) {
-    if (typeof clients == "undefined" | clients.length === 0) return;				
-    clients.forEach(client => {
-		client.send(msg)
+function  broadcast (package) {
+  if (typeof clients == "undefined" | clients.length === 0) return;				
+  
+  const encoded_package = JSON.stringify(package)
+
+  clients.forEach(client => {
+    client.send(encoded_package)
 	})
 }
 

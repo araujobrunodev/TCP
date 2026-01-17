@@ -2,12 +2,12 @@ const net = require("net")
 const { send } = require("../tools/send")
 const { receive } = require("../tools/receive")
 const { leave } = require("./clientLeave")
-let = {clients} = require("./listOfClients")
+const { clients } = require("./listOfClients")
 
 const createServer = (ip, port) => {
     net.createServer((socket) => {
         console.log("client was connected\n")
-        send("mainMessage")
+        send({sender: undefined, msg: "", isServer: true})
         receive(socket, "server")
         leave(socket)
 

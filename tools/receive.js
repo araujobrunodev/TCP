@@ -4,9 +4,10 @@ let {listOfLines} = require("../lines/list")
 
 const receive = (socket, isServer) => {
     socket.on("data",(data) => {
-        if (isServer == "server") broadcast(data);
+        if (isServer == "server") broadcast(JSON.parse(data));
 
-        let line = `received: ${data.toString("utf8")}`
+        const package = JSON.parse(data.toString())
+        let line = `received: ${package.msg}`
 
         if (canBreakline()) console.log(`\n${line}`)
         else console.log(line)
