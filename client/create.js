@@ -9,7 +9,7 @@ const Connect = (ip,port) => {
         console.log("\n==================")
         console.log("   is connected   ")
         console.log("==================\n")
-        send(socket)
+        send({sender: socket, msg: "", isServer: false})
         receive(socket)
     })
 }
